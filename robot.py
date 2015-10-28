@@ -1,18 +1,5 @@
-while True:
-    motorFile = open("motor_instructions.txt", "r")
-    cont = motorFile.read()
-    if cont != "":
-        cont = cont.split()
-        print cont #cont is an array of strings
-        for i in range(0, 4):
-            if cont[i] == "true":
-                cont[i] = True
-            elif cont[i] == "false":
-                cont[i] = False
-            else:
-                cont[i] = None
-        print cont #cont is an array of booleans or NoneTypes
-        print "\n"
+# WIRING AND PIN INFORMATION
+
 # Relays
 # 1 | 16 #
 # 2 | 15 #
@@ -91,4 +78,40 @@ while True:
 # 3 12V - | 4 12V - #
 # 3 GND - | 4 GND - #
 
-        # We're at this indentation...
+# Pins -> Motors
+# Motor 1 +      -
+    # 37 low    high
+    # 40 low    high
+    # 35 high   low
+    # 38 high   low
+# Motor 2 +      -
+    # 12 low    high
+    # 11 low    high
+    # 16 high   low
+    # 13 high   low
+# Motor 3 +      -
+    # 33 low    high
+    # 36 low    high
+    # 31 high   low
+    # 32 high   low
+# Motor 4 +      -
+    # 18 low    high
+    # 15 low    high
+    # 22 high   low
+    # 29 high   low
+
+while True:
+    motorFile = open("motor_instructions.txt", "r")
+    cont = motorFile.read()
+    if cont != "":
+        cont = cont.split()
+        print cont #cont is an array of strings
+        for i in range(0, 4):
+            if cont[i] == "true":
+                cont[i] = True
+            elif cont[i] == "false":
+                cont[i] = False
+            else:
+                cont[i] = None
+        print cont #cont is an array of booleans or NoneTypes
+        print "\n"
