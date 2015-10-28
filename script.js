@@ -51,7 +51,6 @@ document.addEventListener("keydown", function(event) {
   keys[key] = true;
   updateStatus();
   sendStatus();
-  displayInfo();
 });
 document.addEventListener("keyup", function(event) {
   console.log(event.which);
@@ -81,7 +80,6 @@ document.addEventListener("keyup", function(event) {
   keys[key] = false;
   updateStatus();
   sendStatus();
-  displayInfo();
 });
 function updateStatus() {
   x_direction = 0;
@@ -134,6 +132,7 @@ function sendStatus() {
   xhttp.onreadystatechange = function() {
     if(xhttp.readyState == 4 && xhttp.status == 200) {
       response = xhttp.responseText;
+      displayInfo();
     }
   }
   url = "receive.php?m1=" + motors[0] + "&m2=" + motors[1] + "&m3=" + motors[2] + "&m4=" + motors[3];
