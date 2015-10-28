@@ -16,6 +16,13 @@ motors = [null, null, null, null];
 
 response = "";
 
+elements = {
+  keys: document.getElementById("keys"),
+  directions: document.getElementById("directions"),
+  motors: document.getElementById("motors"),
+  sent: document.getElementById("sent")
+};
+
 document.addEventListener("keydown", function(event) {
   console.log(event.which);
   /*
@@ -130,5 +137,5 @@ function sendStatus() {
   xhttp.send();
 }
 function displayInfo() {
-  
+
 }
