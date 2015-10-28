@@ -1,0 +1,19 @@
+div {
+  display: inline-block;
+}
+div#keys {
+  border: 2px dotted black;
+  padding: 3px;
+}
+div#directions {
+  border: 2px dotted red;
+  padding: 3px;
+}
+div#motors {
+  border: 2px dotted blue;
+  padding: 3px;
+}
+div#sent {
+  border: 2px dotted green;
+  padding: 3px;
+}
