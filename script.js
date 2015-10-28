@@ -14,6 +14,8 @@ motors = [null, null, null, null];
 [3 4]
 */
 
+response = "";
+
 document.addEventListener("keydown", function(event) {
   console.log(event.which);
   /*
@@ -119,8 +121,14 @@ function updateStatus() {
   }
 }
 function sendStatus() {
-  
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    response = xhttp.responseText();
+  }
+  url = "receive.php?m1=" + motors[0] + "&m2=" + motors[1] + "&m3=" + motors[2] + "&m4=" + motors[3];
+  xhttp.open("GET", url, true);
+  xhttp.send();
 }
 function displayInfo() {
-
+  
 }
