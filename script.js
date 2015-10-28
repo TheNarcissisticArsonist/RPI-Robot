@@ -137,5 +137,8 @@ function sendStatus() {
   xhttp.send();
 }
 function displayInfo() {
-
+  elements.keys.innerHTML = "w"+keys.w+" a"+keys.a+" s"+keys.s+" d"+keys.d;
+  elements.directions.innerHTML = "x:"+x_direction+" y:"+y_direction;
+  elements.motors.innerHTML = String(motors[0])+String(motors[1])+String(motors[2])+String(motors[3]);
+  elements.sent.innerHTML = response;
 }
