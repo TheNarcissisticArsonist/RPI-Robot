@@ -132,7 +132,9 @@ function updateStatus() {
 function sendStatus() {
   xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
-    response = xhttp.responseText();
+    if(xhttp.readyState == 4 && xhttp.status == 200) {
+      response = xhttp.responseText;
+    }
   }
   url = "receive.php?m1=" + motors[0] + "&m2=" + motors[1] + "&m3=" + motors[2] + "&m4=" + motors[3];
   xhttp.open("GET", url, true);
