@@ -100,6 +100,11 @@
     # 22 high   low
     # 29 high   low
 
+# BE CAREFUL WITH THESE VALUES!!!!!
+RELAYS = [None, 37, 40, 35, 38, 33, 36, 31, 32, 29, 22, 15, 18, 13, 16, 11, 12]
+# Indexes: 0  , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10, 11, 12, 13, 14, 15, 16
+# The None in index 0 makes it easier to use -- relay 1 is RELAYS[1], relay 7 is RELAYS[7], etc.
+
 while True:
     motorFile = open("motor_instructions.txt", "r")
     cont = motorFile.read()
