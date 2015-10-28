@@ -3,4 +3,4 @@ while True:
     cont = motorFile.read()
     if cont != "":
         cont = cont.split()
-        print cont
+        print cont #cont is an array of strings
