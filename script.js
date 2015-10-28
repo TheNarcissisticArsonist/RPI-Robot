@@ -84,6 +84,8 @@ document.addEventListener("keyup", function(event) {
   displayInfo();
 });
 function updateStatus() {
+  x_direction = 0;
+  y_direction = 0;
   if(keys.w) {
     ++y_direction;
   }
