@@ -105,13 +105,13 @@ RELAYS = [None, 37, 40, 35, 38, 33, 36, 31, 32, 29, 22, 15, 18, 13, 16, 11, 12]
 # Indexes: 0  , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10, 11, 12, 13, 14, 15, 16
 # The None in index 0 makes it easier to use -- relay 1 is RELAYS[1], relay 7 is RELAYS[7], etc.
 
-#import RPi.GPIO as GPIO
-#GPIO.setmode(GPIO.BOARD)
-#for i in range(1,18):
-#    print i
-#    print RELAYS[i]
-#    GPIO.setup(RELAYS[i], GPIO.OUT)
-#    GPIO.output(RELAYS[i], True)
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BOARD)
+for i in range(1,18):
+    print i
+    print RELAYS[i]
+    GPIO.setup(RELAYS[i], GPIO.OUT)
+    GPIO.output(RELAYS[i], True)
 try:
     while True:
         motorFile = open("motor_instructions.txt", "r")
@@ -178,4 +178,4 @@ try:
                     GPIO.output([18, 15, 22, 29], 1)
 except:
     print "Detected exception!"
-    # GPIO.cleanup()
+    GPIO.cleanup()
