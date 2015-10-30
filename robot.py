@@ -127,7 +127,6 @@ try:
                 else:
                     cont[i] = None
                     print cont #cont is an array of booleans or NoneTypes
-                    print "\n"
 
                 if cont[0] == True:
                     # 37, 40 low  &  35, 38 high
