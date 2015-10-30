@@ -107,7 +107,7 @@ RELAYS = [None, 37, 40, 35, 38, 33, 36, 31, 32, 29, 22, 15, 18, 13, 16, 11, 12]
 
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BOARD)
-for i in range(1,18):
+for i in range(1,17):
     print i
     print RELAYS[i]
     GPIO.setup(RELAYS[i], GPIO.OUT)
