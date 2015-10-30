@@ -120,3 +120,30 @@ while True:
                 cont[i] = None
         print cont #cont is an array of booleans or NoneTypes
         print "\n"
+
+        if cont[0] == True:
+            # 37, 40 low  &  35, 38 high
+        elif cont[0] == False:
+            # 37, 40 high  &  35, 38 low
+        else:
+            # 37, 40, 35, 38 high
+
+        if cont[1] == True:
+            # 12, 11 low  &  16, 13 high
+        elif cont[1] == False:
+            # 12, 11 high  &  16, 13 low
+        else:
+            # 12, 11, 16, 13 high
+
+        if cont[2] == True:
+            # 33, 36 low  &  31, 32 high
+        elif cont[2] == False:
+            # 33, 36 high  &  31, 32 low
+        else:
+            # 33, 36, 31, 32 high
+        if cont[3] == True:
+            # 18, 15 low  &  22, 29 high
+        elif cont[3] == False:
+            # 18, 15 high  &  22, 29 low
+        else:
+            # 18, 15, 22, 29 high
