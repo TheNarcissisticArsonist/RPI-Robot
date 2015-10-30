@@ -101,13 +101,15 @@
     # 29 high   low
 
 # BE CAREFUL WITH THESE VALUES!!!!!
-RELAYS = [None, 37, 40, 35, 38, 33, 36, 31, 32, 29, 22, 15, 18, 13, 16, 11, 12]
-# Indexes: 0  , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10, 11, 12, 13, 14, 15, 16
-# The None in index 0 makes it easier to use -- relay 1 is RELAYS[1], relay 7 is RELAYS[7], etc.
+RELAYS = [37, 40, 35, 38, 33, 36, 31, 32, 29, 22, 15, 18, 13, 16, 11, 12]
+# Indexes: 0  , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 10, 11, 12, 13, 14, 15,
+
+old_state = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+new_state = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BOARD)
-for i in range(1,17):
+for i in range(0,16):
     print i
     print RELAYS[i]
     GPIO.setup(RELAYS[i], GPIO.OUT)
@@ -128,7 +130,7 @@ try:
                     cont[i] = None
                     print cont #cont is an array of booleans or NoneTypes
 
-                if cont[0] == True:
+                """if cont[0] == True:
                     # 37, 40 low  &  35, 38 high
                     GPIO.output([35, 38], 1)
                     GPIO.output([37, 40], 0)
@@ -174,7 +176,91 @@ try:
                     GPIO.output([22, 29], 0)
                 else:
                     # 18, 15, 22, 29 high
-                    GPIO.output([18, 15, 22, 29], 1)
+                    GPIO.output([18, 15, 22, 29], 1)"""
+
+
+
+
+                if cont[0] == True:
+                    # 37, 40 low  &  35, 38 high
+                    new_state[0] = 0
+                    new_state[1] = 0
+                    new_state[2] = 1
+                    new_state[3] = 1
+                elif cont[0] == False:
+                    # 37, 40 high  &  35, 38 low
+                    new_state[0] = 1
+                    new_state[1] = 1
+                    new_state[2] = 0
+                    new_state[3] = 0
+                else:
+                    # 37, 40, 35, 38 high
+                    new_state[0] = 1
+                    new_state[1] = 1
+                    new_state[2] = 1
+                    new_state[3] = 1
+
+                if cont[1] == True:
+                    # 12, 11 low  &  16, 13 high
+                    new_state[12] = 1
+                    new_state[13] = 1
+                    new_state[14] = 0
+                    new_state[15] = 0
+                elif cont[1] == False:
+                    # 12, 11 high  &  16, 13 low
+                    new_state[12] = 0
+                    new_state[13] = 0
+                    new_state[14] = 1
+                    new_state[15] = 1
+                else:
+                    # 12, 11, 16, 13 high
+                    new_state[12] = 1
+                    new_state[13] = 1
+                    new_state[14] = 1
+                    new_state[15] = 1
+
+                if cont[2] == True:
+                    # 33, 36 low  &  31, 32 high
+                    new_state[4] = 0
+                    new_state[5] = 0
+                    new_state[6] = 1
+                    new_state[7] = 1
+                elif cont[2] == False:
+                    # 33, 36 high  &  31, 32 low
+                    new_state[4] = 1
+                    new_state[5] = 1
+                    new_state[6] = 0
+                    new_state[7] = 0
+                else:
+                    # 33, 36, 31, 32 high
+                    new_state[4] = 1
+                    new_state[5] = 1
+                    new_state[6] = 1
+                    new_state[7] = 1
+
+                if cont[3] == True:
+                    # 18, 15 low  &  22, 29 high
+                    new_state[8] = 1
+                    new_state[9] = 1
+                    new_state[10] = 0
+                    new_state[11] = 0
+                elif cont[3] == False:
+                    # 18, 15 high  &  22, 29 low
+                    new_state[8] = 0
+                    new_state[9] = 0
+                    new_state[10] = 1
+                    new_state[11] = 1
+                else:
+                    # 18, 15, 22, 29 high
+                    new_state[8] = 1
+                    new_state[9] = 1
+                    new_state[10] = 1
+                    new_state[11] = 1
+                for i in range(0, 16):
+                    if old_state[i] != new_state[i]:
+                        GPIO.output(RELAYS[i], new_state[i])
+                        old_state[i] = new_state[i]
+
 except:
     print "Detected exception!"
     GPIO.cleanup()
